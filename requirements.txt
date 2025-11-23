@@ -1,0 +1,45 @@
+# ==========================================
+# REQUIREMENTS.TXT - API Calmou MongoDB
+# ==========================================
+# Para instalar: pip install -r requirements.txt
+# ==========================================
+
+# --- MongoDB Driver ---
+pymongo==4.6.1
+dnspython==2.4.2  # Para MongoDB Atlas (connection strings srv://)
+
+# --- Variáveis de Ambiente ---
+python-dotenv==1.0.1
+
+# --- Segurança e Hash de Senhas ---
+bcrypt==4.1.2
+
+# --- Utilitários ---
+python-dateutil==2.8.2
+colorama==0.4.6  # Para interface colorida no terminal
+
+# ==========================================
+# DEPENDÊNCIAS OPCIONAIS
+# ==========================================
+
+# --- Para migração do PostgreSQL (opcional) ---
+# psycopg2-binary==2.9.11
+
+# --- Testing ---
+# pytest==7.4.3
+
+# ==========================================
+# NOTAS DE VERSÃO
+# ==========================================
+# Python requerido: >= 3.8
+# MongoDB requerido: >= 4.4
+#
+# Para desenvolvimento:
+#   pip install -r requirements.txt
+#
+# Para executar em Linux:
+#   python3 -m venv .venv
+#   source .venv/bin/activate
+#   pip install -r requirements.txt
+#   python principal.py
+# ==========================================
