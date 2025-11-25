@@ -1,0 +1,50 @@
+[2025-11-12 00:26:12,900] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:26:12,900] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:26:12,900] INFO: 🌍 Ambiente: development
+[2025-11-12 00:26:13,196] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:26:13,196] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:26:13,196] INFO: 🌍 Ambiente: development
+[2025-11-12 00:28:46,658] INFO: Novo usuário registrado: dyone@dyone.com
+[2025-11-12 00:29:46,712] INFO: Login bem-sucedido: dyone@dyone.com
+[2025-11-12 00:33:06,094] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:33:06,095] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:33:06,095] INFO: 🌍 Ambiente: development
+[2025-11-12 00:34:04,887] INFO: Humor registrado para usuário 6913feee021b1bb1d88f651d
+[2025-11-12 00:41:40,144] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:41:40,145] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:41:40,145] INFO: 🌍 Ambiente: development
+[2025-11-12 00:42:27,607] ERROR: Erro ao salvar avaliação: Document failed validation, full error: {'index': 0, 'code': 121, 'errmsg': 'Document failed validation', 'errInfo': {'failingDocumentId': ObjectId('6913feee021b1bb1d88f651d'), 'details': {'operatorName': '$jsonSchema', 'schemaRulesNotSatisfied': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'resultados_avaliacoes', 'details': [{'operatorName': 'items', 'reason': 'At least one item did not match the sub-schema', 'itemIndex': 0, 'details': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'tipo', 'details': [{'operatorName': 'enum', 'specifiedAs': {'enum': ['ansiedade', 'depressao', 'estresse', 'burnout']}, 'reason': 'value was not found in enum', 'consideredValue': 'Avaliação de Estresse'}]}]}]}]}]}]}}}
+[2025-11-12 00:44:34,419] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:44:34,420] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:44:34,420] INFO: 🌍 Ambiente: development
+[2025-11-12 00:45:26,038] INFO: Tipo recebido: 'Avaliação de Estresse' -> Normalizado: 'estresse'
+[2025-11-12 00:45:26,045] INFO: Avaliação salva para usuário 6913feee021b1bb1d88f651d
+[2025-11-12 00:45:36,355] INFO: Tipo recebido: 'Questionário de Burnout' -> Normalizado: 'questionário de burnout'
+[2025-11-12 00:45:36,359] ERROR: Erro ao salvar avaliação: Document failed validation, full error: {'index': 0, 'code': 121, 'errmsg': 'Document failed validation', 'errInfo': {'failingDocumentId': ObjectId('6913feee021b1bb1d88f651d'), 'details': {'operatorName': '$jsonSchema', 'schemaRulesNotSatisfied': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'resultados_avaliacoes', 'details': [{'operatorName': 'items', 'reason': 'At least one item did not match the sub-schema', 'itemIndex': 1, 'details': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'tipo', 'details': [{'operatorName': 'enum', 'specifiedAs': {'enum': ['ansiedade', 'depressao', 'estresse', 'burnout']}, 'reason': 'value was not found in enum', 'consideredValue': 'questionário de burnout'}]}]}]}]}]}]}}}
+[2025-11-12 00:46:25,853] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:46:25,853] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:46:25,853] INFO: 🌍 Ambiente: development
+[2025-11-12 00:47:10,932] INFO: Tipo recebido: 'Questionário de Burnout' -> Normalizado: 'burnout'
+[2025-11-12 00:47:10,945] INFO: Avaliação salva para usuário 6913feee021b1bb1d88f651d
+[2025-11-12 00:47:22,555] INFO: Tipo recebido: 'ansiedade' -> Normalizado: 'ansiedade'
+[2025-11-12 00:47:22,559] INFO: Avaliação salva para usuário 6913feee021b1bb1d88f651d
+[2025-11-12 00:47:26,037] ERROR: Erro ao buscar histórico de avaliações: 'Usuario' object has no attribute '_data'
+[2025-11-12 00:48:34,661] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:48:34,661] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:48:34,661] INFO: 🌍 Ambiente: development
+[2025-11-12 00:49:57,609] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:49:57,609] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:49:57,609] INFO: 🌍 Ambiente: development
+[2025-11-12 00:52:32,127] INFO: Usuário 6913feee021b1bb1d88f651d tem 3 avaliações no banco
+[2025-11-12 00:52:32,128] INFO: Retornando 3 avaliações formatadas
+[2025-11-12 00:52:39,304] INFO: Tipo recebido: 'Avaliação de Estresse' -> Normalizado: 'estresse'
+[2025-11-12 00:52:39,312] INFO: Avaliação salva para usuário 6913feee021b1bb1d88f651d
+[2025-11-12 00:52:41,885] INFO: Usuário 6913feee021b1bb1d88f651d tem 4 avaliações no banco
+[2025-11-12 00:52:41,885] INFO: Retornando 4 avaliações formatadas
+[2025-11-12 00:53:42,281] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:53:42,281] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:53:42,282] INFO: 🌍 Ambiente: development
+[2025-11-12 00:55:57,054] INFO: 🚀 Iniciando Calmou API MongoDB v2.0.0
+[2025-11-12 00:55:57,054] INFO: 🗄️ Database: MongoDB
+[2025-11-12 00:55:57,055] INFO: 🌍 Ambiente: development
+[2025-11-12 00:56:27,746] INFO: Conta excluída: 6913feee021b1bb1d88f651d
