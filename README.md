@@ -5,7 +5,7 @@ Este é o backend do projeto "Calmou", um sistema de bem-estar e saúde mental. 
 ## Visão Geral da Arquitetura
 ## Markdown ##
 <img width="1785" height="1105" alt="diagrama_relacional" src="https://github.com/user-attachments/assets/47eb2fb3-3109-4786-b622-4c99f013aa8d" />
-## Markdown ##
+
 
 O projeto está dividido em tres partes principais:
 
