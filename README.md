@@ -3,6 +3,9 @@
 Este é o backend do projeto "Calmou", um sistema de bem-estar e saúde mental. O projeto é construído em Python e utiliza o MongoDB como banco de dados. Ele é composto por uma API RESTful desenvolvida com Flask (destinada a calmou) e um conjunto de scripts para administração ou outras tarefas.
 
 ## Visão Geral da Arquitetura
+## Markdown ##
+<img width="1785" height="1105" alt="diagrama_relacional" src="https://github.com/user-attachments/assets/47eb2fb3-3109-4786-b622-4c99f013aa8d" />
+## Markdown ##
 
 O projeto está dividido em tres partes principais:
 
