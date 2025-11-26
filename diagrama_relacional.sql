@@ -1,97 +1,113 @@
-// ==========================================
-// SISTEMA CALMOU - MODELAGEM COMPLETA
-// MongoDB convertido para Modelo Relacional
-// 7 Coleções - App 100% Funcional
-// ==========================================
+-- =======================================================
+-- SISTEMA CALMOU - MODELO RELACIONAL
+-- Conversão do modelo MongoDB para SQL
+-- =======================================================
 
-Table usuarios {
-  _id varchar(24) [pk, note: 'ObjectId']
-  nome varchar(100) [not null]
-  email varchar(100) [not null, unique]
-  password_hash varchar(255) [not null]
-  cpf varchar(14) [unique]
-  data_nascimento date
-  tipo_sanguineo varchar(3)
-  alergias text
-  foto_perfil varchar(255)
-  data_cadastro datetime [not null]
-  endereco_json text [note: 'JSON: endereço completo']
-  config_json text [note: 'JSON: configurações']
+-- ===========================
+-- TABELA: usuarios
+-- ===========================
+CREATE TABLE usuarios (
+    _id VARCHAR(24) PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    cpf VARCHAR(14) UNIQUE,
+    data_nascimento DATE,
+    tipo_sanguineo VARCHAR(3),
+    alergias TEXT,
+    foto_perfil VARCHAR(255),
+    data_cadastro DATETIME NOT NULL,
+    endereco_json TEXT,
+    config_json TEXT
+);
 
-  Note: 'Usuários do sistema'
-}
+-- ===========================
+-- TABELA: meditacoes
+-- ===========================
+CREATE TABLE meditacoes (
+    _id VARCHAR(24) PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    descricao TEXT NOT NULL,
+    duracao_minutos INT NOT NULL,
+    url_audio VARCHAR(255),
+    tipo VARCHAR(50) NOT NULL,
+    categoria VARCHAR(50) NOT NULL,
+    imagem_capa VARCHAR(255),
+    ativa BOOLEAN DEFAULT TRUE,
+    data_criacao DATETIME
+);
 
-Table meditacoes {
-  _id varchar(24) [pk]
-  titulo varchar(100) [not null]
-  descricao text [not null]
-  duracao_minutos int [not null]
-  url_audio varchar(255)
-  tipo varchar(50) [not null]
-  categoria varchar(50) [not null]
-  imagem_capa varchar(255)
-  ativa boolean [default: true]
-  data_criacao datetime
+-- ===========================
+-- TABELA: classificacoes_humor
+-- ===========================
+CREATE TABLE classificacoes_humor (
+    _id VARCHAR(24) PRIMARY KEY,
+    usuario_id VARCHAR(24) NOT NULL,
+    nivel_humor INT NOT NULL,
+    sentimento_principal VARCHAR(50) NOT NULL,
+    notas TEXT,
+    data_classificacao DATETIME NOT NULL,
 
-  Note: 'Catálogo de meditações'
-}
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(_id)
+);
 
-Table classificacoes_humor {
-  _id varchar(24) [pk]
-  usuario_id varchar(24) [not null, ref: > usuarios._id]
-  nivel_humor int [not null, note: '1-5']
-  sentimento_principal varchar(50) [not null]
-  notas text
-  data_classificacao datetime [not null]
+-- ===========================
+-- TABELA: historico_meditacoes
+-- ===========================
+CREATE TABLE historico_meditacoes (
+    _id VARCHAR(24) PRIMARY KEY,
+    usuario_id VARCHAR(24) NOT NULL,
+    meditacao_id VARCHAR(24) NOT NULL,
+    data_conclusao DATETIME NOT NULL,
+    duracao_real_minutos INT,
+    concluiu BOOLEAN DEFAULT TRUE,
 
-  Note: 'Registro diário de humor'
-}
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(_id),
+    FOREIGN KEY (meditacao_id) REFERENCES meditacoes(_id)
+);
 
-Table historico_meditacoes {
-  _id varchar(24) [pk]
-  usuario_id varchar(24) [not null, ref: > usuarios._id]
-  meditacao_id varchar(24) [not null, ref: > meditacoes._id]
-  data_conclusao datetime [not null]
-  duracao_real_minutos int
-  concluiu boolean [default: true]
+-- ===========================
+-- TABELA: questionarios
+-- ===========================
+CREATE TABLE questionarios (
+    _id VARCHAR(24) PRIMARY KEY,
+    tipo VARCHAR(20) NOT NULL UNIQUE,
+    titulo VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    versao VARCHAR(10),
+    ativo BOOLEAN DEFAULT TRUE,
+    perguntas_json TEXT,
+    interpretacao_json TEXT
+);
 
-  Note: 'Log de meditações realizadas (N:N)'
-}
+-- ===========================
+-- TABELA: avaliacoes
+-- ===========================
+CREATE TABLE avaliacoes (
+    _id VARCHAR(24) PRIMARY KEY,
+    usuario_id VARCHAR(24) NOT NULL,
+    questionario_tipo VARCHAR(20) NOT NULL,
+    respostas_json TEXT,
+    resultado_score INT NOT NULL,
+    resultado_texto TEXT,
+    data_avaliacao DATETIME NOT NULL,
 
-Table questionarios {
-  _id varchar(24) [pk]
-  tipo varchar(20) [not null, unique]
-  titulo varchar(100) [not null]
-  descricao text
-  versao varchar(10)
-  ativo boolean [default: true]
-  perguntas_json text [note: 'Array de perguntas']
-  interpretacao_json text [note: 'Faixas de interpretação']
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(_id),
+    FOREIGN KEY (questionario_tipo) REFERENCES questionarios(tipo)
+);
 
-  Note: 'Templates de questionários'
-}
+-- ===========================
+-- TABELA: notificacoes
+-- ===========================
+CREATE TABLE notificacoes (
+    _id VARCHAR(24) PRIMARY KEY,
+    usuario_id VARCHAR(24) NOT NULL,
+    titulo VARCHAR(100) NOT NULL,
+    mensagem TEXT NOT NULL,
+    tipo VARCHAR(20),
+    data_envio DATETIME NOT NULL,
+    lida BOOLEAN DEFAULT FALSE,
+    data_leitura DATETIME,
 
-Table avaliacoes {
-  _id varchar(24) [pk]
-  usuario_id varchar(24) [not null, ref: > usuarios._id]
-  questionario_tipo varchar(20) [not null, ref: > questionarios.tipo]
-  respostas_json text
-  resultado_score int [not null]
-  resultado_texto text
-  data_avaliacao datetime [not null]
-
-  Note: 'Resultados de questionários psicológicos'
-}
-
-Table notificacoes {
-  _id varchar(24) [pk]
-  usuario_id varchar(24) [not null, ref: > usuarios._id]
-  titulo varchar(100) [not null]
-  mensagem text [not null]
-  tipo varchar(20) [note: 'info|alerta|sucesso|lembrete']
-  data_envio datetime [not null]
-  lida boolean [default: false]
-  data_leitura datetime
-
-  Note: 'Sistema de notificações'
-}
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(_id)
+);
